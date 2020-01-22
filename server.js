@@ -4,7 +4,7 @@ const router = express.Router();
 
 var app = express();
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extends: false }));
+// app.use(bodyParser.urlencoded({ extends: false }));
 app.use(router);
 
 router.get("/message", function(req, res) {
@@ -16,13 +16,15 @@ router.get("/message", function(req, res) {
 });
 
 router.post("/message", function(req, res) {
-  res.send("Mensaje añadido");
+  res.status(201).send({ error: "", body: "Creado Correctamente" });
+  //   res.send("Mensaje añadido");
 });
 
 router.delete("/message", function(req, res) {
   console.log(req.body);
   console.log(req.query);
   res.send("Mensaje " + req.body.value + "Eliminado");
+  //   res.status(201).send({ error: "", body: "Creado Correctamente" });
 });
 
 // app.use("/", function(req, res) {
